@@ -275,9 +275,11 @@ tailwind.config = {
 </button>
 
 <script>
-/* ================= 产品数据（图片来源：迪卡侬官网 CDN easymerch-oss.object.decathlon.com.cn） ================= */
+/* ================= 产品数据（图片来源：迪卡侬官网 CDN easymerch-oss / pixl.decathlon.com.cn，均为官网实拍主图） ================= */
 const DCDN = 'https://easymerch-oss.object.decathlon.com.cn/emh-prd-tf/';
 const DR = '?x-oss-process=image/resize,m_lfit,w_480';
+/* 官网新一代图片 CDN：白底 600x600 产品主图，路径含官方内容哈希，长期稳定 */
+const PIXL = 'https://pixl.decathlon.com.cn/';
 const IMG = {
   run1: DCDN + '2026-04-24/8916978_%E4%B8%BB%E5%9B%BE_1_d674fe8f-5556-497a-aa86-cf61a0907d09.jpg' + DR,
   run2: DCDN + '2025-11-14/8915926_%E4%B8%BB%E5%9B%BE_1_081b1d96-80f3-44c7-b3a6-1f970cd0df96.jpg' + DR,
@@ -290,7 +292,15 @@ const IMG = {
   bike1: DCDN + '2026-06-21/8520047_%E4%B8%BB%E5%9B%BE_1_58c32ca4-1e77-44d0-9c31-10de9286a704.jpg' + DR,
   bike2: DCDN + '2026-06-21/965304_%E4%B8%BB%E5%9B%BE_1_3796309d-cbb0-4877-945e-f41e51b32c77.jpg' + DR,
   bike3: DCDN + '2026-06-21/8480274_%E4%B8%BB%E5%9B%BE_1_eab646e3-7ef5-4da2-8b24-8fdb953f0d51.jpg' + DR,
-  bike4: DCDN + '2025-10-28/8543247_%E4%B8%BB%E5%9B%BE_1_c4a70241-be57-47f0-8435-27137e5330c1.jpg' + DR
+  bike4: DCDN + '2025-10-28/8543247_%E4%B8%BB%E5%9B%BE_1_c4a70241-be57-47f0-8435-27137e5330c1.jpg' + DR,
+  /* 以下 7 张来自官网新一代 CDN pixl.decathlon.com.cn 详情页主图 */
+  vertigo: PIXL + 'p2757868/k$6a0c5104bd9ea18a5e6b269a87f07b6c/content.jpg?f=600x600',
+  fast:    PIXL + 'p3095923/k$439e079d6e0fa86f9e4a4ca41eb291c7/content.jpg?f=600x600',
+  nbabag:  PIXL + 'p2579520/k$05d7cfd60ac57d40b724892ceca7b4fb/content.jpg?f=600x600',
+  b500:    PIXL + 'p2348088/k$868bcb07bb5402ac96521e7b7e15a1e1/content.jpg?f=600x600',
+  easy:    PIXL + 'p2807042/k$6c2fdb2e35872b8db31b849237719bff/content.jpg?f=600x600',
+  yoga:    PIXL + 'p2831183/k$252fa84de690c2bed9a634ad4fff9241/content.webp?f=600x600',
+  kidcamp: PIXL + 'p2475344/k$199df69ce40455e07c1ec9ece4cf4be3/content.jpg?f=600x600'
 };
 /* 无官方图时的品类占位图标（SVG path） */
 const FALLBACK_ICON = {
@@ -344,8 +354,8 @@ const products = [
     img: IMG.hik3 },
   { cat:'outdoor', catName:'户外', name:'Vertigo76 限量胶囊系列', price:'潮流限定',
     tags:['15 件无性别单品','90 年代复古','Gorpcore'],
-    desc:'复古 90 年代户外风格，15 件无性别单品，适合城市徒步与日常出街，把专业户外功能融入都市穿搭。',
-    img: null },
+    desc:'复古 90 年代户外风格，15 件无性别单品（图示摇粒绒卫衣），适合城市徒步与日常出街，把专业户外功能融入都市穿搭。',
+    img: IMG.vertigo },
   { cat:'outdoor', catName:'户外', name:'4 人专利车顶帐篷', price:'家庭露营',
     tags:['轻量化结构','快速搭建','自驾露营'],
     desc:'轻量化结构、快速搭建，面向家庭自驾露营群体，降低露营装备门槛。',
@@ -355,15 +365,15 @@ const products = [
   { cat:'team', catName:'篮球', name:'FAST900 篮球鞋', price:'低/中/高帮可选',
     tags:['侧向支撑','急停防滑','室内外兼容'],
     desc:'强化侧向支撑、急停变向防滑橡胶大底保护脚踝；三种帮高适配不同场上位置。',
-    img: null },
-  { cat:'team', catName:'篮球', name:'NBA 联名运动背包', price:'20L 大容量',
+    img: IMG.fast },
+  { cat:'team', catName:'篮球', name:'NBA 联名运动背包', price:'20/25L 多隔层',
     tags:['NBA 联名','多隔层','通勤+训练'],
-    desc:'20L 大容量多隔层设计，兼顾上课通勤与球场训练，价格亲民。',
-    img: null },
+    desc:'20/25L 多隔层设计，NBA 官方球队联名配色（图示金州勇士款），兼顾上课通勤与球场训练。',
+    img: IMG.nbabag },
   { cat:'team', catName:'篮球', name:'B500 可移动折叠篮球架', price:'家庭校园',
     tags:['2.4-3.05m 可调','可折叠移动','家庭庭院'],
     desc:'高度 2.4-3.05 米可调，适合校园、家庭庭院使用，降低家庭篮球运动门槛。',
-    img: null },
+    img: IMG.b500 },
 
   // 骑行
   { cat:'cycle', catName:'骑行', name:'OWURU LD920E 电助力自行车', price:'城市通勤',
@@ -384,26 +394,26 @@ const products = [
     tags:['回收废金属','低碳排放','重量精准'],
     desc:'使用回收废金属冶炼，降低生产碳排放，重量精度提升，价格低于同级别竞品。',
     img: IMG.dumb },
-  { cat:'fitness', catName:'健身', name:'居家训练配件套装', price:'年轻化配色',
-    tags:['防滑瑜伽垫','阻力带','配色年轻化'],
-    desc:'升级瑜伽垫、阻力带套装，强化防滑性能，配色年轻化，面向居家健身人群。',
-    img: null },
+  { cat:'fitness', catName:'健身', name:'KIMJALY 防滑瑜伽垫', price:'TPE 环保材质',
+    tags:['TPE 材质','加厚防滑','配色清新'],
+    desc:'TPE 环保材质打造，加厚垫身缓冲关节压力，湿滑环境下依然抓地稳固，面向居家瑜伽与轻健身人群。',
+    img: IMG.yoga },
 
   // 水上
   { cat:'water', catName:'水上', name:'Easybreath Dive 浮潜面罩', price:'新手友好',
     tags:['水下 3 米自然呼吸','无需氧气瓶','漂浮供气站'],
     desc:'搭配漂浮供气站，可水下 3 米自然呼吸，无需氧气瓶，大幅降低浮潜运动门槛。',
-    img: null },
+    img: IMG.easy },
 
   // 儿童
   { cat:'kids', catName:'儿童', name:'0-14 岁全龄段运动装备', price:'全系列',
     tags:['运动专家共研','安全耐磨','尺码精细'],
     desc:'覆盖学步、骑行、滑雪、徒步全套装备，与运动专家共同开发，重视安全性与耐磨损。',
     img: IMG.bike3 },
-  { cat:'kids', catName:'儿童', name:'《我的第一次露营》指导手册', price:'亲子内容',
-    tags:['露营启蒙','家庭户外','场景教育'],
-    desc:'随装备推出儿童露营指导手册，带动家庭户外运动消费，培养下一代运动习惯。',
-    img: null }
+  { cat:'kids', catName:'儿童', name:'QUECHUA 儿童露营睡袋 10℃', price:'亲子露营',
+    tags:['10℃ 舒适温标','柔软保暖','可机洗收纳'],
+    desc:'专为儿童山野露营设计，10℃ 舒适温标，填充柔软保暖、睡袋可机洗易收纳，陪孩子完成第一次露营。',
+    img: IMG.kidcamp }
 ];
 
 /* ================= 渲染 Tab 与产品 ================= */
